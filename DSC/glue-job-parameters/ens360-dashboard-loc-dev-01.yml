@@ -21,4 +21,4 @@ default_arguments:
   --enable-continuous-cloudwatch-log": "true"
   --job-language": "python"
   --enable-auto-scaling": "true"
-description: "loc-dev-glue job"
+description: "This job is created to derive alarm information for each location type of every Ensure community"
