@@ -21,4 +21,4 @@ default_arguments:
   --enable-continuous-cloudwatch-log": "true"
   --job-language": "python"
   --enable-auto-scaling": "true"
-description: "oc-dev-glue job"
+description: "The job filters records within ensure communities under 'alarms' and 'events' sources based on the 'createdat' timestamp, utilizing dates specified in a CSV file to exclude test data."
