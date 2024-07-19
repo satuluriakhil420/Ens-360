@@ -5,7 +5,7 @@ timeout: 2800
 worker_type: "G.2X"
 number_of_workers: 25
 glue_version: "4.0"
-region: "us-east-2"
+region: "us-west-1"
 default_arguments:
   --enable-glue-datacatalog: "true"
   --c1.alarms.source: "enrich-analytics/CompanionOne/alarm-activity/data"
@@ -21,3 +21,6 @@ default_arguments:
   --enable-continuous-cloudwatch-log": "true"
   --job-language": "python"
   --enable-auto-scaling": "true"
+#description: "c1-dev-glue job"
+#tags:
+#  environment: "dev"
