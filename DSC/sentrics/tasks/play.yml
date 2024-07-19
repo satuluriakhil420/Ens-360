@@ -11,6 +11,7 @@
     worker_type: "{{ worker_type }}"
     number_of_workers: "{{ number_of_workers }}"
     glue_version: "{{ glue_version }}"
+    description: "{{ description }}"
     state: present
     tags:
       environment: "dev"
