@@ -1,0 +1,12 @@
+role: "arn:aws:iam::059643481773:role/sentrics"
+command_script_location: "s3://aws-glue-assets-059643481773-us-east-1/scripts/test1.py"
+command_python_version: "3"
+timeout: 4000
+worker_type: "G.2X"
+number_of_workers: 100
+glue_version: "4.0"
+region: "us-east-2"
+default_arguments:
+  --enable-glue-datacatalog: "true"
+  --c1.alarms.source: "enrich-analytics/CompanionOne/alarm-activity/data"
+
