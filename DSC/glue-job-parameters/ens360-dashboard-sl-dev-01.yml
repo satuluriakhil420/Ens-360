@@ -21,5 +21,5 @@ default_arguments:
   --enable-continuous-cloudwatch-log": "true"
   --job-language": "python"
   --enable-auto-scaling": "true"
-description: "sl-dev-glue job"
+description: "This job is created to derive the alarm timeline from the Ensure data source."
 
