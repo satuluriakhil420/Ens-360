@@ -69,7 +69,7 @@ module "lambda_function" {
   }
 }
 
-module "iam-step-function" {
+module "iam" {
   source = "./iam-step-function"
   role_name   = "step_function_role"
   policy_name = "step_function_policy"
