@@ -21,6 +21,4 @@ default_arguments:
   --enable-continuous-cloudwatch-log": "true"
   --job-language": "python"
   --enable-auto-scaling": "true"
-  description: "This is an older job created to derive peer percentiles on the peer corporate parent and community data on static shifts."
-
-
+description: "This is an older job created to derive peer percentiles on the peer corporate parent and community data on static shifts."
