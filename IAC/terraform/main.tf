@@ -78,7 +78,7 @@ module "iam-sfn" {
 module "sfn" {
   source = "./iam-step-function/sfn"
   state_machine_name = "my_state_machine"
-  role_arn           = module.iam.step_function_role_arn
+  role_arn           = iam-step-function.iam.step_function_role_arn
 }
 
 
