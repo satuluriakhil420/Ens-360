@@ -69,4 +69,16 @@ module "lambda_function" {
   }
 }
 
+module "iam" {
+  source = "./iam-step-function"
+  role_name   = "step_function_role"
+  policy_name = "step_function_policy"
+}
+
+module "sfn" {
+  source = "./iam-step-function/sfn"
+  state_machine_name = "my_state_machine"
+  role_arn           = module.iam.step_function_role_arn
+}
+
 
