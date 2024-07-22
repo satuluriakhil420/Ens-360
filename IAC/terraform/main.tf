@@ -70,7 +70,7 @@ module "lambda_function" {
 }
 
 module "iam-sfn" {
-  source = "./iam-step-function"
+  source = "./iam-step-function/iam-sfn"
   role_name   = "step_function_role"
   policy_name = "step_function_policy"
 }
