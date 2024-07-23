@@ -77,6 +77,6 @@ module "iam-sfn" {
 
 module "sfn" {
   source = "./iam-step-function/sfn"
-  state_machine_name = "my_state_machine"
+  state_machine_name = "ens-360-dashboard-wf-dev"
   role_arn           = module.iam-sfn.step_function_role_arn
 }
