@@ -25,14 +25,14 @@ module "iam" {
 }
 
 module "gluejob" {
-  depends_on = [module.iam,s3]
+  depends_on = [module.iam,module.s3]
   source = "git::https://github.com/satuluriakhil420/terraform.git//modules/gluejob?ref=main"
   iam_role_arn = module.iam.myrole_arn
   glue_job_script_locations = local.glue_job_script_locations
 }
 
 module "gluecrawler" {
-  depends_on = [module.iam,s3]
+  depends_on = [module.iam,module.s3]
   source = "git::https://github.com/satuluriakhil420/terraform.git//modules/gluecrawler?ref=main"
   iam_role_arn = module.iam.myrole_arn
   bucket_name  = module.s3.bucket_name
