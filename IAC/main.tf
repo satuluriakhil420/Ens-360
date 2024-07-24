@@ -32,7 +32,7 @@ module "gluejob" {
 }
 
 module "gluecrawler" {
-  depends_on = [module.iam,module.s3]
+  depends_on = [module.iam,module.s3,module.aws_s3_bucket_ownership_controls,module.aws_s3_bucket_acl]
   source = "git::https://github.com/satuluriakhil420/terraform.git//modules/gluecrawler?ref=main"
   iam_role_arn = module.iam.myrole_arn
   bucket_name  = module.s3.bucket_name
