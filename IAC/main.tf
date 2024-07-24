@@ -1,21 +1,39 @@
+terraform {
+  required_version = ">= 0.12"
+
+  backend "s3" {
+  }
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
+
 module "iam" {
-  source = "./iam"
+  source = "git::https://github.com/satuluriakhil420/terraform.git//modules/iam?ref=main"
 }
 
 module "gluejob" {
-  source = "./gluejob"
+  source = "git::https://github.com/satuluriakhil420/terraform.git//modules/gluejob?ref=main"
   iam_role_arn = module.iam.myrole_arn
   glue_job_script_locations = local.glue_job_script_locations
 }
 
 module "gluecrawler" {
-  source = "./gluecrawler"
+  source = "git::https://github.com/satuluriakhil420/terraform.git//modules/gluecrawler?ref=main"
   iam_role_arn = module.iam.myrole_arn
   bucket_name  = module.s3.bucket_name
 }
 
 module "s3" {
-  source = "./s3"
+  source = "git::https://github.com/satuluriakhil420/terraform.git//modules/s3?ref=main"
 }
 
 data "aws_s3_bucket" "existing" {
@@ -44,7 +62,7 @@ resource "aws_s3_bucket_acl" "example" {
 }
 
 module "lambda_iam_role" {
-  source = "./lambda/lambda_iam_role"
+  source = "git::https://github.com/satuluriakhil420/terraform.git//modules/lambda/lambda_iam_role?ref=main"
 
   region    = "us-east-1"
   role_name = "lambda"
@@ -55,7 +73,7 @@ module "lambda_iam_role" {
 }
 
 module "lambda_function" {
-  source = "./lambda/lambda_function"
+  source = "git::https://github.com/satuluriakhil420/terraform.git//modules/lambda/lambda_function"
 
   region                  = "us-east-1"
   lambda_function_name    = "ensure360-dashboard-qs-dev-dev-01"
@@ -70,13 +88,13 @@ module "lambda_function" {
 }
 
 module "iam-sfn" {
-  source = "./iam-step-function/iam-sfn"
+  source = "git::https://github.com/satuluriakhil420/terraform.git//modules/iam-step-function/iam-sfn"
   role_name   = "step_function_role"
   policy_name = "step_function_policy"
 }
 
 module "sfn" {
-  source = "./iam-step-function/sfn"
+  source = "git::https://github.com/satuluriakhil420/terraform.git//modules/iam-step-function/sfn"
   state_machine_name = "ens-360-dashboard-wf-dev"
   role_arn           = module.iam-sfn.step_function_role_arn
 }
