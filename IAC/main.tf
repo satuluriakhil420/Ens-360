@@ -73,7 +73,7 @@ module "lambda_iam_role" {
 }
 
 module "lambda_function" {
-  source = "git::https://github.com/satuluriakhil420/terraform.git//modules/lambda/lambda_function"
+  source = "git::https://github.com/satuluriakhil420/terraform.git//modules/lambda/lambda_function?ref=main"
 
   region                  = "us-east-1"
   lambda_function_name    = "ensure360-dashboard-qs-dev-dev-01"
@@ -88,13 +88,13 @@ module "lambda_function" {
 }
 
 module "iam-sfn" {
-  source = "git::https://github.com/satuluriakhil420/terraform.git//modules/iam-step-function/iam-sfn"
+  source = "git::https://github.com/satuluriakhil420/terraform.git//modules/iam-step-function/iam-sfn?ref=main"
   role_name   = "step_function_role"
   policy_name = "step_function_policy"
 }
 
 module "sfn" {
-  source = "git::https://github.com/satuluriakhil420/terraform.git//modules/iam-step-function/sfn"
+  source = "git::https://github.com/satuluriakhil420/terraform.git//modules/iam-step-function/sfn?ref=main"
   state_machine_name = "ens-360-dashboard-wf-dev"
   role_arn           = module.iam-sfn.step_function_role_arn
 }
